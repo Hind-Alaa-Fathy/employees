@@ -1,9 +1,6 @@
-import 'package:employees/sql_helper.dart';
 import 'package:flutter/material.dart';
 import 'screens/form_page.dart';
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  var db = SqlHelper();
   runApp(const MyApp());
 }
 

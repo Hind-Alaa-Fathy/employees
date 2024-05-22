@@ -1,7 +1,7 @@
 import 'package:employees/shared_component/data_table.dart';
 import 'package:employees/shared_component/text_in_app.dart';
 import 'package:flutter/material.dart';
-
+import '../shared_component/floating_action_button.dart';
 import 'form_page.dart';
 
 class ShowEmployeesData extends StatelessWidget {
@@ -11,15 +11,11 @@ class ShowEmployeesData extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey[300],
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const EmployeeFormPage(),));
-        },
-        backgroundColor: Colors.blueGrey[500],
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        elevation: 5,
-        tooltip: "Add New Employee",
-        child: Icon(Icons.add,color: Colors.cyan.shade300,),
+      floatingActionButton: floatingActionButton(
+        text: "Add New Employee",
+        context: context,
+        icon: Icons.add,
+        page: const EmployeeFormPage()
       ),
       body: SafeArea(
         child: SingleChildScrollView(

@@ -1,8 +1,7 @@
 import 'package:employees/models/employee_model.dart';
 import 'package:employees/shared_component/text_in_app.dart';
 import 'package:flutter/material.dart';
-
-import '../sql_helper.dart';
+import '../helpers/sql_helper.dart';
 
 class EmployeesTable extends StatefulWidget {
    const EmployeesTable({super.key});
@@ -12,7 +11,7 @@ class EmployeesTable extends StatefulWidget {
 }
 
 class _EmployeesTableState extends State<EmployeesTable> {
-  bool sortAscend = false;
+  bool sortAscend = true;
   List<Employee> employees = [];
   final SqlHelper sqlHelper = SqlHelper();
 

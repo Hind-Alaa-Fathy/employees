@@ -10,7 +10,7 @@ class SqlHelper
  }
 
    Future<void> createDatabase()async {
-     await openDatabase(
+     database = await openDatabase(
       'employees.db',
       version: 1,
       onCreate: (db, version) {
@@ -31,9 +31,7 @@ class SqlHelper
 
         print("database opened");
       },
-    ).then((value) {
-      database = value;
-    });
+    );
   }
 
   Future<void> insertToDatabase({
@@ -59,7 +57,7 @@ class SqlHelper
       throw Exception('Database is not initialized');
     }
     final List<Map<String, dynamic>> maps = await database!.rawQuery('SELECT * FROM employees');
-    return List.generate(maps.length, (i) {
+     return List.generate(maps.length, (i) {
       return Employee(
         name: maps[i]['name'] as String,
         salary: maps[i]['salary'] as num,

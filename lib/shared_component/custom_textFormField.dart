@@ -44,7 +44,6 @@ class DefaultTextFormField extends StatelessWidget {
           errorStyle: TextStyle(color: Colors.orange[900])
         ),
         maxLines: null,
-
       ),
     );
   }

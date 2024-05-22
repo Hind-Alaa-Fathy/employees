@@ -1,10 +1,9 @@
 import 'package:employees/shared_component/custom_textFormField.dart';
 import 'package:employees/shared_component/text_in_app.dart';
 import 'package:employees/screens/show_data.dart';
-import 'package:employees/sql_helper.dart';
+import 'package:employees/helpers/sql_helper.dart';
 import 'package:flutter/material.dart';
-
-
+import '../shared_component/floating_action_button.dart';
 
 class EmployeeFormPage extends StatefulWidget {
   const EmployeeFormPage({super.key});
@@ -23,6 +22,13 @@ class _EmployeeFormPageState extends State<EmployeeFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor:  Colors.blueGrey,
+       floatingActionButton: floatingActionButton(
+          text: "Show Employee Data",
+          context: context,
+          color: Colors.blueGrey.shade600,
+          icon: Icons.sticky_note_2_outlined,
+          page: const ShowEmployeesData()
+      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -78,11 +84,8 @@ class _EmployeeFormPageState extends State<EmployeeFormPage> {
                                 });
                                 if(formKey.currentState!.validate())
                                   {
-                                    num? salary = num.tryParse(employeeSalaryController.text);
-                                    if (salary != null)
-                                    {
-                                      sql.insertToDatabase(name:employeeNameController.text,salary: salary );
-                                    }
+                                    num? salary = num.parse(employeeSalaryController.text);
+                                    sql.insertToDatabase(name:employeeNameController.text,salary: salary );
                                     employeeNameController.clear();
                                     employeeSalaryController.clear();
                                     setState(() {
